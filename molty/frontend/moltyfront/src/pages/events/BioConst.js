@@ -37,7 +37,7 @@ const BioConst = ({ activeEvent, setActiveEvent }) => {
                                 Напишите информацию о <br /> Вашей компании:
                             </div>
 
-                            <input type="text" id='bio' className='headEvent textBigField button23' onChange={setDiv} />
+                            <textarea id='bio' className='headEvent textBigField button23' onChange={setDiv} />
 
 
                         </div>

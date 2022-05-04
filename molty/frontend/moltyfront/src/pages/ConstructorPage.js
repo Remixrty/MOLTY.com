@@ -23,10 +23,15 @@ export default function ConstructorPage() {
         return (
             <>
                 {/* <div className='container'> */}
-                    <div className='bigg'>{globalJson.header}</div>
-                    <div className='medd'>{globalJson.bio}</div>
-                    <div className='bigg'>{globalJson.links}</div>
-                    {/* <div className='bigg'>{globalJson.}</div> */}
+                <div className='bigg const_header'>{globalJson.header}</div>
+                <div className='medd const_bio'>{globalJson.bio}</div>
+                {/* <div className='bigg const_links'>{globalJson.links}</div> */}
+                <div className="modalFlex_more">
+                    <div className='button23 const_links'>vk.com/remixrty</div>
+                    <div className='button23 const_links'>instagram.com/Remixrty</div>
+                </div>
+
+                {/* <div className='bigg'>{globalJson.}</div> */}
                 {/* </div> */}
             </>
         )

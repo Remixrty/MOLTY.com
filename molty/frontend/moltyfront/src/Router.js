@@ -5,6 +5,7 @@ import Cabinet from './pages/Cabinet'
 import Header from './pages/Header'
 import ConstructorPage from './pages/ConstructorPage'
 import Constructor from './pages/Constructor'
+import MultyLink from './pages/MultyLink'
 
 export default function Router() {
 
@@ -16,7 +17,7 @@ export default function Router() {
                 <Route path='/' element={<MainPage/>}/>
                 <Route path='/username' element={<Cabinet/>}/>
                 <Route path='/constructor/:link' element={<Constructor/>}/>
-                <Route path='/:link' element={<ConstructorPage/>}/>
+                <Route path='/:link' element={<MultyLink/>}/>
             </Routes>
         
         </BrowserRouter>

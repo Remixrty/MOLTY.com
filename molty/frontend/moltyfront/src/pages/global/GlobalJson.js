@@ -12,7 +12,7 @@ class MyJson {
             back: localStorage.getItem('back') ? localStorage.getItem('back') : 'none',
             bio: localStorage.getItem('bio') ? localStorage.getItem('bio') : 'none',
             header: localStorage.getItem('header') ? localStorage.getItem('header') : 'none',
-            links: localStorage.getItem('links') ? localStorage.getItem('links') : 'none',
+            links: localStorage.getItem('links') ? localStorage.getItem('links') : 'links',
             email: localStorage.getItem('email') ? localStorage.getItem('email') : 'none',
             username: localStorage.getItem('username') ? localStorage.getItem('username') : 'none',
         }
