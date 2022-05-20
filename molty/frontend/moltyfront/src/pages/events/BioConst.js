@@ -15,10 +15,10 @@ const BioConst = ({ activeEvent, setActiveEvent }) => {
 
 
     function setDiv() {
-        setBio(document.getElementById('bio').value)
+        setBio(document.getElementById('bio1').value)
     }
 
-    function saveHeader() {
+    function saveBio() {
         localStorage.setItem('bio', bio)
         // MyJson()
     }
@@ -37,13 +37,13 @@ const BioConst = ({ activeEvent, setActiveEvent }) => {
                                 Напишите информацию о <br /> Вашей компании:
                             </div>
 
-                            <textarea id='bio' className='headEvent textBigField button23' onChange={setDiv} />
+                            <textarea id='bio1' className='headEvent textBigField button23' onChange={setDiv} />
 
 
                         </div>
 
                         <div className='modalFull'>
-                            <div className="button65" onClick={() => saveHeader()}>
+                            <div className="button65" onClick={() => saveBio()}>
                                 <a className="wBh">Сохранить</a>
                             </div>
                             <div className="button65" onClick={e => closeForm(e)}>

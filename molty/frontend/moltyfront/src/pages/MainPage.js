@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Constructor from './Constructor';
 import SecondPage from './SecondPage';
-import { Link } from 'react-router-dom';
 import Login from './Login'
 
 export default function MainPage() {

@@ -1,5 +1,3 @@
-// import axios from 'axios';
-// import { cookie } from 'express/lib/response';
 import React, { useState } from 'react';
 import ConstructorPage from './ConstructorPage';
 import EventConstructor from './EventConstructor';
@@ -9,6 +7,20 @@ export default function Constructor() {
     const [modalActive, setModalActive] = useState(false)
     const [isValid, setIsValid] = useState(false)
 
+
+    function clearState() {
+        localStorage.removeItem('header')
+        localStorage.removeItem('bio')
+        localStorage.removeItem('links')
+    }
+
+    async function checkState() {
+        if (localStorage.getItem('token')) {
+            await ({
+                
+            })
+        }
+    }
     // if ()
     return (
         <>
@@ -24,12 +36,21 @@ export default function Constructor() {
                         <div className='row'>
                             <div className='phone'>
                                 <ConstructorPage />
-                                <div className='whiteButton addButton' onClick={() => setModalActive(true)}>
-                                    <a className='wBh'>
-                                        Изменить
-                                    </a>
+                                <div className='modalFull'>
+                                    <div className='button65' onClick={() => setModalActive(true)}>
+                                        <a className='wBh'>
+                                            Изменить
+                                        </a>
+                                    </div>
+                                    <div className='button65' onClick={() => clearState()}>
+                                        <a className='wBh'>
+                                            Очистить
+                                        </a>
+                                    </div>
                                 </div>
+
                                 <EventConstructor active={modalActive} setActive={setModalActive} />
+
                             </div>
                         </div>
                     </div>

@@ -10,19 +10,28 @@ const Login = ({ active, setActive }) => {
     const [json, setJson] = useState()
     const navigate = useNavigate()
 
+   
+
     useEffect(() => {
-        setJson(JSON.stringify({ email, username }))
+        if (localStorage.getItem('username') && localStorage.getItem('email')) {
+            setEmail(localStorage.getItem('email'))
+            // console.log(localStorage.getItem('email'))
+            setUsername(localStorage.getItem('username'))
+            setJson(JSON.stringify({ email, username }))
+            login()
+        }
     }, [email, username])
 
     useEffect(() => {
         if (user != '') {
-            // console.log(user);
             const button = document.getElementById('checkButton')
             const usernameLabel = document.getElementById('usernameLabel')
             const emailLabel = document.getElementById('emailLabel')
 
             if (user.status == '200') {
                 if (user.data.user.isActivated == true) {
+                    console.log(user);
+                    localStorage.setItem('token', user.data.accessToken)
                     navigate('/constructor/' + user.data.user.username)
                 }
                 else {
@@ -46,14 +55,13 @@ const Login = ({ active, setActive }) => {
                 }
             }
         }
-    })
+    }, [user])
 
     function closeForm(e) {
         setActive(false)
     }
 
     async function login(e) {
-        // const json = JSON.stringify({ email, username })
         console.log(json)
         await axios({
             url: 'http://localhost:5000/api/registration',
@@ -69,7 +77,16 @@ const Login = ({ active, setActive }) => {
             setUser(err)
             console.log(user);
         })
+
+
+        if (!localStorage.getItem('username') || !localStorage.getItem('email')) {
+            localStorage.setItem('username', username)
+            localStorage.setItem('email', email)
+            setJson(JSON.stringify({ email, username }))
+        }
     }
+
+
 
 
     return (

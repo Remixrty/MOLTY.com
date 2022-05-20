@@ -27,12 +27,18 @@ const ContactUs = ({ active, setActive }) => {
                                     <div className="label">
                                         <p className="wBh label">Введите имя:</p>
                                     </div>
+
+                                    <input type="text" id='header' className='headEvent textField button23 fullWidth' />
                                     <div className="label">
                                         <p className="wBh label">Укажите почту:</p>
                                     </div>
+                                    <input type="text" id='header' className='headEvent textField button23 fullWidth' />
+
                                     <div className="label">
                                         <p className="wBh label">Напишите Ваш вопрос:</p>
                                     </div>
+                                    <textarea id='bio' className='headEvent textBigField button23 fullWidth' />
+
                                     <div className="buttonStroked">
                                         <a className="wBh">Отправить запрос</a>
                                     </div>

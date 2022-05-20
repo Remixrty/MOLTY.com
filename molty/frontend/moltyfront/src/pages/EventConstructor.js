@@ -20,7 +20,8 @@ const EventConstructor = ({ active, setActive }) => {
     }
 
     function saveConst() {
-        MyJson.save()
+        const saver = new MyJson()
+        saver.save(saver.getGlobal())
     }
 
 

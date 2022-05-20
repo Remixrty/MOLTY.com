@@ -21,9 +21,11 @@ class UserController {
     }
     async saveConst(req, res, next) {
         try {
-            const { json } = req.body
-            console.log(json);
-            return res.json(json)
+            // console.log(req);
+            const { back, bio, header, links, email, username } = req.body
+            const response = await userService.const(back, bio, header, links, email, username);
+            // console.log(response);
+            return res.json(response)
         }
         catch (e) {
             next(e)

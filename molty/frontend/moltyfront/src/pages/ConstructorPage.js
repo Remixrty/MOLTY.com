@@ -7,9 +7,11 @@ export default function ConstructorPage() {
     let json = new MyJson()
     // console.log(username);
     const globalJson = json.getGlobal()
-    console.log(globalJson)
+    const splittedLinks = globalJson.links.split('\n')
+    console.log(splittedLinks);
+    // console.log(globalJson)
     // console.log(json.map(e=>({e})));
-    if (globalJson.bio == 'none' && globalJson.back == 'none' && globalJson.email == 'none' && globalJson.header == 'none' && globalJson.username == 'none' && globalJson.links) {
+    if (globalJson.bio == 'none' && globalJson.back == 'none' && globalJson.email == 'none' && globalJson.header == 'none' && globalJson.username == 'none' && globalJson.links == 'none' && !localStorage.getItem('token')) {
         return (
             <>
                 <div className='container'>
@@ -25,10 +27,20 @@ export default function ConstructorPage() {
                 {/* <div className='container'> */}
                 <div className='bigg const_header'>{globalJson.header}</div>
                 <div className='medd const_bio'>{globalJson.bio}</div>
-                {/* <div className='bigg const_links'>{globalJson.links}</div> */}
-                <div className="modalFlex_more">
-                    <div className='button23 const_links'>vk.com/remixrty</div>
-                    <div className='button23 const_links'>instagram.com/Remixrty</div>
+                <div className="modalFlexx">
+                    {
+                        splittedLinks.map((link, index) => {
+                            return (
+                                <div key={index} className='button23 const_links'>
+                                    <a href={'//'+link}>{link}</a>
+                                    
+                                    <br/>
+                                    </div> 
+                            )
+                        })
+                    }
+                    {/* <div className='button23 const_links'>vk.com/remixrty</div>
+                    <div className='button23 const_links'>instagram.com/Remixrty</div> */}
                 </div>
 
                 {/* <div className='bigg'>{globalJson.}</div> */}

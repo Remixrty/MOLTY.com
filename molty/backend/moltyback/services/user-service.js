@@ -89,8 +89,26 @@ class UserService {
 
     }
 
-    async const(json) {
+    async const(back, bio, header, links, email, username) {
+        const user = await Users.findOne({ username })
+        if (!user) {
+            throw ApiError.UnauthorizedError()
+        }
+        const json = JSON.stringify({back, bio, header, links})
         console.log(json);
+        console.log(JSON.parse(json));
+        if (user && json){
+            user.json = json
+            return user.save()
+        }
+        
+    }
+
+    async getConst(username) {
+        const user = await Users.findOne({ username })
+        if (!user) {
+            throw ApiError.UnauthorizedError()
+        }
     }
 }
 

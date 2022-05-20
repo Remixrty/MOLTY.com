@@ -9,7 +9,7 @@ router.post('/registration',
     body('email').isEmail(),
     body('username').isLength({ min: 3, max: 32 }),
     UserController.registration)
-router.post('/constructor/:link', UserController.saveConst)
+router.post('/constructor/', UserController.saveConst)
 router.get('/activate/:username/:link', userController.activate)
 router.get('/:link', UserController.getConst)
 router.get('/refresh', UserController.refresh)

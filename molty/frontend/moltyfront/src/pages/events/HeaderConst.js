@@ -16,7 +16,8 @@ const HeaderConst = ({ activeEvent, setActiveEvent }) => {
 
 
     function setDiv() {
-        setHeader(document.getElementById('header').value)
+        // console.log(document.getElementById('header1').value);
+        setHeader(document.getElementById('header1').value)
     }
 
     function saveHeader() {
@@ -38,7 +39,7 @@ const HeaderConst = ({ activeEvent, setActiveEvent }) => {
                                 Напишите название своей <br />компании/Ваш никнейм
                             </div>
 
-                            <input type="text" id='header' className='headEvent textField button23' onChange={setDiv} />
+                            <input type="text" id='header1' className='headEvent textField button23' onChange={setDiv} />
 
                             <div className='headEvent button23'>
                                 Он будет отображаться наверху<br />Вашей страницы:

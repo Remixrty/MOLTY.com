@@ -1,15 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyJson from '../global/GlobalJson';
 
 const LinksConst = ({ activeEvent, setActiveEvent }) => {
-
-
-
+    const [initialValue, setInitialValue] = useState('')
+    const [i, setI] = useState(0)
+    const [link, setLink] = useState('Ссылки')
+    const [ins, setIns] = useState('Выберите ссылку выше')
     let json = new MyJson()
     // console.log(username);
+
+    useEffect(() => {
+        if (link === 'VK') {
+            setIns('vk.com/')
+        }
+        if (link === 'TIKTOK') {
+            setIns('tiktok.com/')
+        }
+        if (link === 'INSTAGRAM') {
+            setIns('instagram.com/')
+        }
+        document.getElementById('links').value = ins
+    }, [ins, link])
+
+    useEffect(() => {
+        if (initialValue !== '') {
+            localStorage.setItem('links', initialValue)
+        }
+        else if (localStorage.getItem('links')) {
+            setInitialValue(localStorage.getItem('links'))
+        }
+    }, [initialValue])
+
+    // useEffect(()=> {
+    //     document.getElementById
+    // })
+
     const globalJson = json.getGlobal()
     function closeForm(e) {
         setActiveEvent(false)
+    }
+
+    function addLink() {
+        if (document.getElementById('links').value != ins) {
+            if (initialValue.indexOf(ins) == -1) {
+                if (!localStorage.getItem('links')) {
+                    setInitialValue(document.getElementById('links').value)
+                }
+                else {
+                    setInitialValue(localStorage.getItem('links') + '\n' + document.getElementById('links').value)
+                }
+            }
+            else {
+                console.log(initialValue.indexOf(ins));
+            }
+        }
+        console.log(initialValue, ins);
+        // console.log(initialValue);
+    }
+
+    function saveLink() {
+        
     }
 
     return (
@@ -24,26 +74,34 @@ const LinksConst = ({ activeEvent, setActiveEvent }) => {
                                     Выберите платформу <br />из выпадающего списка
                                 </div>
 
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                                        Ссылки
+                                <div className="dropdown">
+                                    <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {link}
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a className="dropdown-item" onClick={() => setLink('VK')}>VK</a></li>
+                                        <li><a className="dropdown-item" onClick={() => setLink('INSTAGRAM')}>INSTAGRAM</a></li>
+                                        <li><a className="dropdown-item" onClick={() => setLink('TIKTOK')}>TIKTOK</a></li>
                                     </ul>
                                 </div>
-                                
 
-                                <input type="text" id='header' className='headEvent textField button23' />
-                                <div className="button65" >
+
+                                <input type="text" id='links' className='headEvent textField button23' />
+                                <div className="button65" onClick={e => addLink()}>
                                     <a className="wBh">Добавить</a>
                                 </div>
 
                                 <div className="modalFull_links">
                                     <div className='headEvent button23'>
-                                        {globalJson.links}
+                                        {initialValue}
+                                        {/* <ul>
+                                            {
+                                                initialValue.map(item=>{
+                                                    return (<li>{item}</li>)
+                                                })
+                                            }
+                                        </ul> */}
+
                                     </div>
 
                                 </div>
