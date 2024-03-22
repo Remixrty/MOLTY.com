@@ -18,7 +18,6 @@ const Login = ({ active, setActive }) => {
             // console.log(localStorage.getItem('email'))
             setUsername(localStorage.getItem('username'))
             setJson(JSON.stringify({ email, username }))
-            login()
         }
     }, [email, username])
 
@@ -44,18 +43,18 @@ const Login = ({ active, setActive }) => {
             }
             if (user.response) {
                 console.log('hello');
-                if (user.response.status == '406') {
+                if (user.response.status === '406') {
                     emailLabel.textContent = 'Проверьте введенные данные'
                     emailLabel.style.color = 'red'
 
                 }
-                if (user.response.status == '400') {
+                if (user.response.status === '400') {
                     emailLabel.textContent = user.response.data.message
                     emailLabel.style.color = 'red'
                 }
             }
         }
-    }, [user])
+    })
 
     function closeForm(e) {
         setActive(false)
@@ -64,7 +63,7 @@ const Login = ({ active, setActive }) => {
     async function login(e) {
         console.log(json)
         await axios({
-            url: 'http://localhost:5000/api/registration',
+            url: 'http://localhost:6006/api/registration',
             method: 'POST',
             data: json,
             withCredentials: "true",

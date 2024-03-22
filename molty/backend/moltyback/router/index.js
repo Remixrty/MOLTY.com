@@ -1,5 +1,4 @@
 const Router = require('express')
-const userController = require('../controllers/user-controller')
 const UserController = require('../controllers/user-controller')
 const { body } = require('express-validator')
 const router = new Router()
@@ -10,7 +9,7 @@ router.post('/registration',
     body('username').isLength({ min: 3, max: 32 }),
     UserController.registration)
 router.post('/constructor/', UserController.saveConst)
-router.get('/activate/:username/:link', userController.activate)
+router.get('/activate/:username/:link', UserController.activate)
 router.get('/:link', UserController.getConst)
 router.get('/refresh', UserController.refresh)
 router.get('/users', UserController.users)

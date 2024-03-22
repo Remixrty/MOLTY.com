@@ -7,7 +7,6 @@ class UserController {
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                // console.log(errors)
                 next(ApiError.BadRequest('Ошибка при валидации', errors.array()))
             }
             const { email, username } = req.body
@@ -21,10 +20,8 @@ class UserController {
     }
     async saveConst(req, res, next) {
         try {
-            // console.log(req);
             const { back, bio, header, links, email, username } = req.body
             const response = await userService.const(back, bio, header, links, email, username);
-            // console.log(response);
             return res.json(response)
         }
         catch (e) {

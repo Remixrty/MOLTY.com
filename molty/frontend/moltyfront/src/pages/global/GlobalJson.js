@@ -30,7 +30,7 @@ class MyJson {
         console.log(saver);
         if (global.username != 'none') {
             await axios({
-                url: 'http://localhost:5000/api/constructor/',
+                url: 'http://localhost:6006/api/constructor/',
                 method: 'POST',
                 data: saver,
                 withCredentials: "true",

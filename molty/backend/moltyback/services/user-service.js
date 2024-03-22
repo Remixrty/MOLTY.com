@@ -4,20 +4,18 @@ const MailService = require('./mail-service')
 const TokenService = require('./token-service')
 const tokenService = require('./token-service')
 const UserDto = require('../dtos/dto')
-const { refresh } = require('../controllers/user-controller')
 const ApiError = require('../exeptions/api-error')
 
 
 class UserService {
 
     async registration(email, username) {
-
         const cand = await Users.findOne({ username })
         const candidate = await Users.findOne({ email })
         console.log(cand, candidate)
         if (cand && candidate && cand.email == candidate.email && cand.username == candidate.username) {
+            console.log(cand);
             if (cand.isActivated === true) {
-                console.log('hello')
                 const userDto = new UserDto(cand)
                 const tokens = tokenService.generateToken({ ...userDto })
                 await tokenService.saveToken(userDto.id, tokens.refreshToken)

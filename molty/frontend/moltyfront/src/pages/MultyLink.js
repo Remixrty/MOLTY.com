@@ -3,13 +3,10 @@ import { useParams } from 'react-router-dom';
 import MyJson from './global/GlobalJson';
 
 export default function MultyLink() {
-    // const {username} = props
     let json = new MyJson()
-    // console.log(username);
     const globalJson = json.getGlobal()
     const splittedLinks = globalJson.links.split('\n')
     console.log(globalJson)
-    // console.log(json.map(e=>({e})));
     if (globalJson.bio == 'none' && globalJson.back == 'none' && globalJson.email == 'none' && globalJson.header == 'none' && globalJson.username == 'none' && globalJson.links) {
         return (
             <>
